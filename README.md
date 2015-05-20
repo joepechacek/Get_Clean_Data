@@ -68,8 +68,3 @@ in the current working directory.  The user can choose to assign the `read.table
 output to any data object of their choice - it does not need to be "summarizeData".
 
 `summarizedData <- read.table("tidyData.txt", header = TRUE)`
-=======
-# Get_Clean_Data
-Repo for the Coursera Getting and Cleaning Data project files
-Content of this repo will include Project 1 files that were created starting May 15, 2015
->>>>>>> d11d778675047ba25717b4aa75fbe85ed761981d
