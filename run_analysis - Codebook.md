@@ -13,18 +13,18 @@ Each of the following files must be in the current working directory of the
 R session for the script to locate and use the data files.  If you are not sure
 what the current working directory is, call `getwd()` from the R prompt (>).
 
-- 'features.txt'
-- 'activity_labels.txt'
-- 'X_train.txt'
-- 'y_train.txt'
-- 'subject_train.txt'
-- 'X_test.txt'
-- 'y_test.txt'
-- 'subject_test.txt'
+- features.txt
+- activity_labels.txt
+- X_train.txt
+- y_train.txt
+- subject_train.txt
+- X_test.txt
+- y_test.txt
+- subject_test.txt
 
 The user of the script does not need to perform any additional preparations to
 the data other than ensure the above listed files are contained in the current
-working directory.  DO NOT CHANGE THE FILES.
+working directory.  DO NOT change the file names or content of the files.
 
 ### Dataset Variables
 
