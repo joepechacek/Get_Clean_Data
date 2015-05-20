@@ -3,21 +3,8 @@
 ##                                                                            ##
 ##  The following script contains the R code to read in files from a study    ##
 ##  that measured the accelerometers and gyro from a Samsung Galaxy S II for  ##
-##  a group of 30 volunteers.                                                 ##
-##                                                                            ##
-##  The purpose of this script is to perform two separate outcomes:           ##
-##  1) The first outcome is to convert raw data files from the study into a   ##
-##     merged dataset with all observations from two groups - a test group    ##
-##     and a training group.  Each group has 3 groups of files that must be   ##
-##     combined to provide the indexes needed to identify the subject in each ##
-##     group and the activity they performed during each measurement taken.   ##
-##     After the files needed to 'rebuild' the data are completed, the two    ##
-##     groups can be combined into a single dataset.  This combined data will ##
-##     then be filtered to only contain the mean and standard deviation       ## 
-##     values for each measurement made in the study.                         ##
-##  2) The second outcome is to create a tidy dataset that will contain the   ##
-##     average value for each variable for each activity for each subject.    ##
-##     Note that each subject did not perform all of the activities listed.   ##
+##  a group of 30 volunteers.  see the README.md file for specifics on using  ##
+##  this script.                                                              ##
 ##                                                                            ##
 ################################################################################
 
@@ -43,8 +30,10 @@ trainSubject <- read.table("subject_train.txt", col.names = "Subject.ID", colCla
 ##  Read in the files that contain the activity performed in each group and merge
 ##  to add the 'Activity.Name' variable for each group
 masterActivity <- read.table("activity_labels.txt", col.names = c("Activity.ID", "Activity.Name"))
-testActivity <- merge(read.table("y_test.txt", col.names = "Activity.ID"), masterActivity)
-trainActivity <- merge(read.table("y_train.txt", col.names = "Activity.ID"), masterActivity)
+testActivity <- read.table("y_test.txt", col.names = "Activity.ID")
+testActivity$Activity.Name <- masterActivity[testActivity[,1], 2]
+trainActivity <- read.table("y_train.txt", col.names = "Activity.ID")
+trainActivity$Activity.Name <- masterActivity[trainActivity[,1], 2]
 
 ##  Combine the data frames for both groups to create a single data frame
 ##  of all variables and indexes for that group.
@@ -64,7 +53,8 @@ allData <- cbind(allDataSub, allDataMean, allDataStd)
 ##  Clean up data frames that are no longer needed
 rm(list = c("testSubject", "testActivity", "testData", "testDataAll",
             "trainSubject", "trainActivity", "trainData","trainDataAll", 
-            "masterActivity", "columnNames", "allDataMean", "allDataStd"))
+            "masterActivity", "columnNames", "allDataSub", "allDataMean",
+            "allDataStd"))
 
 
 ##  The second part of the Project Assignment was to create a tidy dataset
@@ -90,4 +80,3 @@ rm(list = c("allDataSub", "data_dft", "grpData"))
 
 ##  Output the final tidy dataset
 write.table(summarizedData, "tidyData.txt", row.name = FALSE)
-
