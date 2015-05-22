@@ -2,7 +2,7 @@
 ##           Getting and Cleaning Data - Course Project                       ##
 ##                                                                            ##
 ##  The following script contains the R code to read in files from a study    ##
-##  that measured the accelerometers and gyro from a Samsung Galaxy S II for  ##
+##  that measured the accelerometers and gyro from a Samsung Galaxy S-II for  ##
 ##  a group of 30 volunteers.  see the README.md file for specifics on using  ##
 ##  this script.                                                              ##
 ##                                                                            ##
@@ -11,7 +11,7 @@
 require(dplyr)
 require(tidyr)
 
-##  Beign the load of the various data files needed.
+##  Begin the load of the various data files needed.
 ##  These must be in the current working directory.
 
 ##  Read in the file with the columnNames so it can be passed to other functions later
@@ -33,8 +33,8 @@ trainData <- setNames(trainData, columnNames)
 testSubject <- read.table("subject_test.txt", col.names = "Subject.ID", colClasses = "factor")
 trainSubject <- read.table("subject_train.txt", col.names = "Subject.ID", colClasses = "factor")
 
-##  Read in the files that contain the activity performed in each group and merge
-##  to add the 'Activity.Name' variable for each group
+##  Read in the files that contain the activity performed in each group and combine
+##  the masterActivity list to include the 'Activity.Name' variable for each group
 masterActivity <- read.table("activity_labels.txt", col.names = c("Activity.ID", "Activity.Name"))
 testActivity <- read.table("y_test.txt", col.names = "Activity.ID")
 testActivity$Activity.Name <- masterActivity[testActivity[,1], 2]
@@ -46,7 +46,7 @@ trainActivity$Activity.Name <- masterActivity[trainActivity[,1], 2]
 testDataAll <- cbind(testSubject, testActivity, testData)[, -2]
 trainDataAll <- cbind(trainSubject, trainActivity, trainData)[, -2]
 
-##  Merge the test and training data frames into a single data frame.
+##  rbind the test and training data frames into a single data frame.
 allData <- rbind(testDataAll, trainDataAll)
 
 ##  Use select() to parse out the columns requested for outcome #1
@@ -72,13 +72,13 @@ data_dft <- tbl_df(allData)
 ##  Rather than chain all the functions together, I have created a couple 
 ##  intermediate steps to better follow the flow of the data transformations.
 
-##  The first step is to gather() the data into a tall-skinney dataset
+##  The first step is to gather() the data into a long dataset
 data_dft <- gather(data_dft, Measured.Variable, Measured.Value, -(Subject.ID:Activity.Name))
 
-##  Start with group_by to create groups on Activity.Name and Subject.ID
+##  Start with group_by to create groups on Activity.Name, Subject.ID and Measured.Variable
 grpData <- group_by(data_dft, Subject.ID, Activity.Name, Measured.Variable)
 
-##  Create a summarized dataset with the Mean and SD of the selected columns
+##  Create a summarized dataset with the Mean and SD of the readings
 summarizedData <- summarize(grpData, Measured.Value.Average = mean(Measured.Value))
 
 ##  Clean up data frames that are no longer needed
