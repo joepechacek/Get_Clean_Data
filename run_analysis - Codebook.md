@@ -2,8 +2,8 @@
 
 ### Overview
 
-Following is the codebook to define the variables and acceptable values
-for the final output file "tidayData.txt" produced with the run_analysis.R
+Following is the codebook that defines the variables and acceptable values
+for the output file "tidyData.txt" that was produced with the run_analysis.R
 script.  For more information on the raw data source, see the README.md file.
 
 In preparation for sourcing the run_analysis.R script, the following items should
@@ -11,7 +11,7 @@ be completed to ensure the raw data files have been prepared for the script.
 
 Each of the following files must be in the current working directory of the 
 R session for the script to locate and use the data files.  If you are not sure
-what the current working directory is, call `getwd()` from the R prompt (>).
+what the current working directory is, call `getwd()` from the R prompt `>`.
 
 - features.txt
 - activity_labels.txt
@@ -22,13 +22,12 @@ what the current working directory is, call `getwd()` from the R prompt (>).
 - y_test.txt
 - subject_test.txt
 
-The user of the script does not need to perform any additional preparations to
-the data other than ensure the above listed files are contained in the current
-working directory.  DO NOT change the file names or content of the files.
+The user of the script does not need to perform any additional actions with 
+the data.  DO NOT change the file names or content of the files.
 
 ### Dataset Variables
 
-The final tidy data set consists of four variables as defined below:
+The output dataset "tidyData.txt" consists of four variables as defined below:
 
 **Subject.ID:**
 
@@ -56,143 +55,145 @@ Defines the type of measurement from the Smartphone accelerometer or gyro.
                                         
 factor: 66 levels
 
-Each Measured.Variable is composed of 3 parts that describe the measurement made
+Each Measured.Variable is composed of 4 parts that describe the measurement made
 
-- *t* or *f*: t = time domain measurement; f = frequency domain measurement
-- *reading*: The name of the accelerometer or gyro reading from the Smartphone
-- *XYZ* : Label to define the X, Y, or Z axis of measurement
+- *t* or *f* : t = time domain measurement; f = frequency domain measurement
+- *reading* : The name of the accelerometer or gyro reading from the Smartphone
+- *-mean()* or *-std()* : Mean or Standard Deviation of values for specified *reading* in the dataset
+- *-XYZ* : Label to define the X, Y, or Z axis of measurement if applicable
 
-tBodyAcc.mean...X
+tBodyAcc-mean()-X
 
-tBodyAcc.mean...Y
+tBodyAcc-mean()-Y
 
-tBodyAcc.mean...Z
+tBodyAcc-mean()-Z
 
-tGravityAcc.mean...X
+tGravityAcc-mean()-X
 
-tGravityAcc.mean...Y
+tGravityAcc-mean()-Y
 
-tGravityAcc.mean...Z
+tGravityAcc-mean()-Z
 
-tBodyAccJerk.mean...X
+tBodyAccJerk-mean()-X
 
-tBodyAccJerk.mean...Y
+tBodyAccJerk-mean()-Y
 
-tBodyAccJerk.mean...Z
+tBodyAccJerk-mean()-Z
 
-tBodyGyro.mean...X
+tBodyGyro-mean()-X
 
-tBodyGyro.mean...Y
+tBodyGyro-mean()-Y
 
-tBodyGyro.mean...Z
+tBodyGyro-mean()-Z
 
-tBodyGyroJerk.mean...X
+tBodyGyroJerk-mean()-X
 
-tBodyGyroJerk.mean...Y
+tBodyGyroJerk-mean()-Y
 
-tBodyGyroJerk.mean...Z
+tBodyGyroJerk-mean()-Z
 
-tBodyAccMag.mean..
+tBodyAccMag-mean()
 
-tGravityAccMag.mean..
+tGravityAccMag-mean()
 
-tBodyAccJerkMag.mean..
+tBodyAccJerkMag-mean()
 
-tBodyGyroMag.mean..
+tBodyGyroMag-mean()
 
-tBodyGyroJerkMag.mean..
+tBodyGyroJerkMag-mean()
 
-fBodyAcc.mean...X
+fBodyAcc-mean()-X
 
-fBodyAcc.mean...Y
+fBodyAcc-mean()-Y
 
-fBodyAcc.mean...Z
+fBodyAcc-mean()-Z
 
-fBodyAccJerk.mean...X
+fBodyAccJerk-mean()-X
 
-fBodyAccJerk.mean...Y
+fBodyAccJerk-mean()-Y
 
-fBodyAccJerk.mean...Z
+fBodyAccJerk-mean()-Z
 
-fBodyGyro.mean...X
+fBodyGyro-mean()-X
 
-fBodyGyro.mean...Y
+fBodyGyro-mean()-Y
 
-fBodyGyro.mean...Z
+fBodyGyro-mean()-Z
 
-fBodyAccMag.mean..
+fBodyAccMag-mean()
 
-fBodyBodyAccJerkMag.mean..
+fBodyBodyAccJerkMag-mean()
 
-fBodyBodyGyroMag.mean..
+fBodyBodyGyroMag-mean()
 
-fBodyBodyGyroJerkMag.mean..
+fBodyBodyGyroJerkMag-mean()
 
-tBodyAcc.std...X
+tBodyAcc-std()-X
 
-tBodyAcc.std...Y
+tBodyAcc-std()-Y
 
-tBodyAcc.std...Z
+tBodyAcc-std()-Z
 
-tGravityAcc.std...X
+tGravityAcc-std()-X
 
-tGravityAcc.std...Y
+tGravityAcc-std()-Y
 
-tGravityAcc.std...Z
+tGravityAcc-std()-Z
 
-tBodyAccJerk.std...X
+tBodyAccJerk-std()-X
 
-tBodyAccJerk.std...Y
+tBodyAccJerk-std()-Y
 
-tBodyAccJerk.std...Z
+tBodyAccJerk-std()-Z
 
-tBodyGyro.std...X
+tBodyGyro-std()-X
 
-tBodyGyro.std...Y
+tBodyGyro-std()-Y
 
-tBodyGyro.std...Z
+tBodyGyro-std()-Z
 
-tBodyGyroJerk.std...X
+tBodyGyroJerk-std()-X
 
-tBodyGyroJerk.std...Y
+tBodyGyroJerk-std()-Y
 
-tBodyGyroJerk.std...Z
+tBodyGyroJerk-std()-Z
 
-tBodyAccMag.std..
+tBodyAccMag-std()
 
-tGravityAccMag.std..
+tGravityAccMag-std()
 
-tBodyAccJerkMag.std..
+tBodyAccJerkMag-std()
 
-tBodyGyroMag.std..
+tBodyGyroMag-std()
 
-tBodyGyroJerkMag.std..
+tBodyGyroJerkMag-std()
 
-fBodyAcc.std...X
+fBodyAcc-std()-X
 
-fBodyAcc.std...Y
+fBodyAcc-std()-Y
 
-fBodyAcc.std...Z
+fBodyAcc-std()-Z
 
-fBodyAccJerk.std...X
+fBodyAccJerk-std()-X
 
-fBodyAccJerk.std...Y
+fBodyAccJerk-std()-Y
 
-fBodyAccJerk.std...Z
+fBodyAccJerk-std()-Z
 
-fBodyGyro.std...X
+fBodyGyro-std()-X
 
-fBodyGyro.std...Y
+fBodyGyro-std()-Y
 
-fBodyGyro.std...Z
+fBodyGyro-std()-Z
 
-fBodyAccMag.std..
+fBodyAccMag-std()
 
-fBodyBodyAccJerkMag.std..
+fBodyBodyAccJerkMag-std()
 
-fBodyBodyGyroMag.std..
+fBodyBodyGyroMag-std()
 
-fBodyBodyGyroJerkMag.std..
+fBodyBodyGyroJerkMag-std()
+
 
 **Measured.Value.Average:**
 

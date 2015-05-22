@@ -19,9 +19,15 @@ columnNames <- read.table("features.txt",
                           sep = " ", 
                           stringsAsFactors = FALSE)[,2]
 
-##  Read in the observed data for each subject in each activity
-testData <- read.table("X_test.txt", col.names = columnNames)
-trainData <- read.table("X_train.txt", col.names = columnNames)
+##  Read in the observed data for each subject in each activity.  Through trial
+##  during this process, I found that the column names using the col.names 
+##  argument in read.table() resulted in truncated column names that were not 
+##  very pretty.  Using the setNames() function resulted in a better outcome.
+testData <- read.table("X_test.txt")
+testData <- setNames(testData, columnNames)
+
+trainData <- read.table("X_train.txt")
+trainData <- setNames(trainData, columnNames)
 
 ##  Read in the files with the subject that performed each activity
 testSubject <- read.table("subject_test.txt", col.names = "Subject.ID", colClasses = "factor")
@@ -46,8 +52,8 @@ allData <- rbind(testDataAll, trainDataAll)
 ##  Use select() to parse out the columns requested for outcome #1
 ##  and then cbind them together.  Not very elegant but it works.
 allDataSub <- select(allData, Subject.ID:Activity.Name)
-allDataMean <- select(allData, contains(".mean."))
-allDataStd <- select(allData, contains(".std."))
+allDataMean <- select(allData, contains("mean()"))
+allDataStd <- select(allData, contains("std()"))
 allData <- cbind(allDataSub, allDataMean, allDataStd)
 
 ##  Clean up data frames that are no longer needed
@@ -76,7 +82,7 @@ grpData <- group_by(data_dft, Subject.ID, Activity.Name, Measured.Variable)
 summarizedData <- summarize(grpData, Measured.Value.Average = mean(Measured.Value))
 
 ##  Clean up data frames that are no longer needed
-rm(list = c("allDataSub", "data_dft", "grpData"))
+rm(list = c("data_dft", "grpData"))
 
 ##  Output the final tidy dataset
 write.table(summarizedData, "tidyData.txt", row.name = FALSE)
