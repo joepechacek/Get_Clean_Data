@@ -1,3 +1,5 @@
+*Updated: 2015-07-13*
+
 ## Project 1 - Codebook
 
 ### Overview

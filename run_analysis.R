@@ -1,5 +1,5 @@
 ################################################################################
-##           Getting and Cleaning Data - Course Project                       ##
+##           Getting and Cleaning Data - Course Project (July 2015)           ##
 ##                                                                            ##
 ##  The following script contains the R code to read in files from a study    ##
 ##  that measured the accelerometers and gyro from a Samsung Galaxy S-II for  ##

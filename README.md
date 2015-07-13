@@ -1,5 +1,6 @@
-Purpose
--------------------------------------------------------------
+*Updated: 2015-07-13*
+
+## Purpose
 
 The purpose of the script run_analysis.R is to load and analyze a series of 
 files from the University of California - Irvine Machine Learning Repository
@@ -42,8 +43,7 @@ The user of the script does not need to perform any additional preparations to
 the data.  DO NOT change the files or filenames as the script will fail
 to work otherwise.
 
-Script Overview
--------------------------------------------------------------
+## Script Overview
 
 The script will preform 2 basic functions to tranform the data.
 
